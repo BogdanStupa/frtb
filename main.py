@@ -1,6 +1,4 @@
-from frtb.range_frtb_bucket import RangeFrtbBucket
-from frtb.value_frtb_bucket import ValueFrtbBucket
-
+from frtb import ValueFrtbBucket, RangeFrtbBucket
 
 if __name__ == '__main__':
 
@@ -11,6 +9,7 @@ if __name__ == '__main__':
         print(value_bucket.get_bucket(frtb_value))
 
     print()
+
     range_bucket = RangeFrtbBucket("frtb-range.csv")
     frtb_range_values = [1, 2, 5, 7, 3, 9, 10, 15, 22, 33, 55]
 
