@@ -1,18 +1,24 @@
 from frtb._frtb_bucket import FrtbBucket
+from typing import Tuple, List
+
 
 class ValueFrtbBucket(FrtbBucket):
 
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         super().__init__(file_name)
         self.data = {}
         for line in self.read_file():
-            self.__save_line_from_file(line)
+            key, value = self.__get_data_from_line(line)
+            self.data[key] = value
 
-    def get_bucket(self, value):
+    def get_bucket(self, value: int) -> int:
         try:
             return self.data[value]
         except KeyError:
-            return f"{value} Not Found"
+            return -1
 
-    def __save_line_from_file(self, line):
-        self.data[line[1]] = line[0]
+    def __get_data_from_line(self, line: List[str]) -> Tuple:
+        if len(line) != 2 or not line[0].isdigit():
+            raise ValueError("Invalid value in line")
+
+        return line[1], int(line[0])
