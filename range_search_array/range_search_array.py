@@ -9,7 +9,7 @@ class RangeSearchArray:
         self.__data = np.sort(np.array(data_, dtype=[('left_range', int), ('right_range', int), ('bucket_id', int)]))
         self.__n = self.__data.shape[0]
 
-    def get_bucket(self, value: int) -> int:
+    def find(self, value: int) -> int:
         left = 0
         right = self.__n - 1
         while left <= right:

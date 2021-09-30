@@ -6,18 +6,18 @@ class ValueFrtbBucket(FrtbBucket):
 
     def __init__(self, file_name: str):
         super().__init__(file_name)
-        self.data = {}
+        self.__data = {}
         for line in self.read_file():
             key, value = self.__get_data_from_line(line)
-            self.data[key] = value
+            self.__data[key] = value
 
-    def get_bucket(self, value: int) -> int:
+    def get_bucket(self, value: str) -> int:
         try:
-            return self.data[value]
+            return self.__data[value]
         except KeyError:
             return -1
 
-    def __get_data_from_line(self, line: List[str]) -> Tuple:
+    def __get_data_from_line(self, line: List[str]) -> Tuple[str, int]:
         if len(line) != 2 or not line[0].isdigit():
             raise ValueError("Invalid value in line")
 

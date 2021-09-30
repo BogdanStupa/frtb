@@ -10,10 +10,10 @@ class RangeFrtbBucket(FrtbBucket):
         data_ = []
         for line in self.read_file():
             data_.append(self.__get_data_from_line(line))
-        self.data = RangeSearchArray(data_)
+        self.__data = RangeSearchArray(data_)
 
     def get_bucket(self, value: int) -> int:
-        return self.data.get_bucket(value=value)
+        return self.__data.find(value=value)
 
     def __get_data_from_line(self, line: List[str]) -> Tuple[int, int, int]:
         if len(line) != 3:

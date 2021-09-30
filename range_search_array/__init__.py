@@ -1,1 +1,1 @@
-from .range_structure import RangeSearchArray
+from .range_search_array import RangeSearchArray

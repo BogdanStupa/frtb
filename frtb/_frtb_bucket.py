@@ -5,14 +5,14 @@ from typing import Tuple, List
 
 class FrtbBucket:
     __metaclass__ = ABCMeta
-    __slots__ = ["data", "file_name"]
+    __slots__ = ["__data", "__file_name"]
 
     def __init__(self, file_name: str):
-        self.data = None
-        self.file_name = file_name
+        self.__data = None
+        self.__file_name = file_name
 
     def read_file(self):
-        return read_csv_file(self.file_name)
+        return read_csv_file(self.__file_name)
 
     @abstractmethod
     def get_bucket(self, value: int) -> int:
